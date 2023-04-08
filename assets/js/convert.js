@@ -15,20 +15,27 @@ function setSrcDst(){
 function calc(id){
     let In = document.getElementById(id).value;
     setSrcDst();
+    if(In == ""){
+        dst.value = "";
+        src.value = "";
+        return;
+    }
     if(!containsOnlyNumbers(In.split(".").join("")) && In !=""){
-        document.getElementById(id).value = "";
+        dst.value = "";
+        src.value = "";
         err.style.display = "block";
+        return;
     }
     else{
         err.style.display = "none";
-    }
-    if(id == "source"){
-        In = parseFloat(convert(parseFloat(In), sUnit, dUnit).toFixed(3));
-        In=="NaN"? dst.value = "0" : dst.value = In;
-    }
-    else{
-        In = parseFloat(convert(parseFloat(In), dUnit, sUnit).toFixed(3));
-        In=="NaN"? src.value = "0" : src.value = In;
+        if(id == "source"){
+            In = parseFloat(convert(parseFloat(In), sUnit, dUnit).toFixed(3));
+            In=="NaN" ? dst.value = "0" : dst.value = In;
+        }
+        else{
+            In = parseFloat(convert(parseFloat(In), dUnit, sUnit).toFixed(3));
+            In=="NaN" ? src.value = "0" : src.value = In;
+        }
     }
 }
 function convert(val, sUnit, dUnit){
