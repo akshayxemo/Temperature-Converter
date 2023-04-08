@@ -23,7 +23,7 @@ img{
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 4rem;
+    gap: 3rem;
     height: 100vh;
 }
 .heading{
@@ -89,9 +89,15 @@ select:focus>option{
 #feature-text{
     color: lime;
 }
-#info{
+.footer{
     font-size: 0.9rem;
 }
+#error{
+    color: orangered;
+    font-size: 1rem;
+    display: none;
+}
+
 @keyframes blink {
     0%{
         opacity: 1;

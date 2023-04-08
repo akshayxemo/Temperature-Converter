@@ -24,7 +24,7 @@
         </div>
         <div class="converter-box">
             <div class="source inputs">
-                <input type="text" name="source" id="source" placeholder="Enter temperature" oninput="calc(this.id)">
+                <input type="text" name="source" id="source" placeholder="Enter temperature"  oninput="calc(this.id)">
                 <select id="s-unit" onchange="calc('source')">
                     <option value="C">&degC</option>
                     <option value="F">&degF</option>
@@ -33,7 +33,7 @@
             </div>
             <span class="by-dir-way">&lrarr;</span>
             <div class="dest inputs">
-                <input type="text" name="dest" id="dest" placeholder="Enter temperature" oninput="calc(this.id)">
+                <input type="text" name="dest" id="dest" placeholder="Genrated temperature" oninput="calc(this.id)">
                 <select id="d-unit" onchange="calc('source')">
                     <option value="C">&degC</option>
                     <option value="F">&degF</option>
@@ -41,7 +41,8 @@
                 </select>
             </div>
         </div>
-        <div class="info" id="info">Made with 💖 by Akshay </div>
+        <p id="error">Input must contains only NUMBER</p>
+        <div class="footer">Made with 💖 by Akshay </div>
     </div>
 
     <script src="assets/js/app.js"></script>

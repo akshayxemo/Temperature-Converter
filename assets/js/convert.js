@@ -2,6 +2,11 @@ let sUnit = document.getElementById("s-unit").value;
 let dUnit = document.getElementById("d-unit").value;
 const src = document.getElementById("source");
 const dst = document.getElementById("dest");
+const err = document.getElementById("error");
+
+function containsOnlyNumbers(str){
+    return /^\d+$/.test(str);
+}
 
 function setSrcDst(){
     sUnit = document.getElementById("s-unit").value;
@@ -10,13 +15,20 @@ function setSrcDst(){
 function calc(id){
     let In = document.getElementById(id).value;
     setSrcDst();
-    if(id == "source"){
-        In = convert(parseInt(In), sUnit, dUnit).toFixed(2);
-        dst.value = In;
+    if(!containsOnlyNumbers(In.split(".").join("")) && In !=""){
+        document.getElementById(id).value = "";
+        err.style.display = "block";
     }
     else{
-        In = convert(parseInt(In), dUnit, sUnit).toFixed(2);
-        src.value = In;
+        err.style.display = "none";
+    }
+    if(id == "source"){
+        In = parseFloat(convert(parseFloat(In), sUnit, dUnit).toFixed(3));
+        In=="NaN"? dst.value = "0" : dst.value = In;
+    }
+    else{
+        In = parseFloat(convert(parseFloat(In), dUnit, sUnit).toFixed(3));
+        In=="NaN"? src.value = "0" : src.value = In;
     }
 }
 function convert(val, sUnit, dUnit){
